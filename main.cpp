@@ -1,44 +1,29 @@
 #include <iostream>
+#include <map>
+#include <string>
 using namespace std;
-void print(int A[],int n){
-for(int i=0;i<n;i++){
-    cout<<A[i]<<" ";
-}
-}
+
 int main()
 {
-    int n;
-    cin>>n;
-    int A[n];
-    bool F[n];
-    for(int i=0;i<n;i++){
-        cin>>A[i];
-        if(A[i]>0) F[i]=true;
-        else F[i]=false;
-    }
-    for(int i=0;i<n-1;i++){
-       for(int j=0;j<n-i-1;j++){
-        if(A[j]<0&&A[j+1]<0){
-                if(A[j]<A[j+1]){
-                    int t=A[j];
-            A[j]=A[j+1];
-            A[j+1]=t;
-            print(A,n);
-            cout<<endl;
-                }
-            }
-            else if(A[j]>0&&A[j+1]>0){
-                if(A[j]>A[j+1]){
-                    int t=A[j];
-            A[j]=A[j+1];
-            A[j+1]=t;
-            print(A,n);
-            cout<<endl;
-       }
-    }}
-    }
+  setlocale(LC_ALL, "Russian");
+   multimap<string,string> Dictionary;
+   Dictionary.insert ( pair<string,string>("Hello","Привет") );
+   Dictionary.insert ( pair<string,string>("Bye","Пока") );
+   Dictionary.insert ( pair<string,string>("Cat","Кошка") );
+   Dictionary.insert ( pair<string,string>("Fast","Быстрый") );
+   Dictionary.insert ( pair<string,string>("Run","Бегать") );
+   Dictionary.insert ( pair<string,string>("Jump","Прыгать") );
+   Dictionary.insert ( pair<string,string>("Sleep","Спать") );
+   Dictionary.insert ( pair<string,string>("Leap","Прыжок") );
+   Dictionary.insert ( pair<string,string>("Red","Красный") );
+   Dictionary.insert ( pair<string,string>("Healthy","Здоровый") );
+   cout << "Англорусский словарь:\n";
+   multimap<string,string>::iterator it;
+   for (it = Dictionary.begin(); it != Dictionary.end();it++)
+   {
+      cout << it->first << "-" << it->second << endl;
+   }
 
 
-
-
+   Dictionary.clear();
 }
