@@ -1,29 +1,64 @@
-#include <iostream>
-#include <map>
-#include <string>
+ #include <iostream>
 using namespace std;
-
+void print(int A[],int n){
+for(int i=0;i<n;i++){
+    cout<<A[i]<<" ";
+}
+}
 int main()
 {
-  setlocale(LC_ALL, "Russian");
-   multimap<string,string> Dictionary;
-   Dictionary.insert ( pair<string,string>("Hello","Привет") );
-   Dictionary.insert ( pair<string,string>("Bye","Пока") );
-   Dictionary.insert ( pair<string,string>("Cat","Кошка") );
-   Dictionary.insert ( pair<string,string>("Fast","Быстрый") );
-   Dictionary.insert ( pair<string,string>("Run","Бегать") );
-   Dictionary.insert ( pair<string,string>("Jump","Прыгать") );
-   Dictionary.insert ( pair<string,string>("Sleep","Спать") );
-   Dictionary.insert ( pair<string,string>("Leap","Прыжок") );
-   Dictionary.insert ( pair<string,string>("Red","Красный") );
-   Dictionary.insert ( pair<string,string>("Healthy","Здоровый") );
-   cout << "Англорусский словарь:\n";
-   multimap<string,string>::iterator it;
-   for (it = Dictionary.begin(); it != Dictionary.end();it++)
-   {
-      cout << it->first << "-" << it->second << endl;
-   }
+    int n;
+    cin>>n;
+    int A[n];
+    for(int i=0;i<n;i++){
+        cin>>A[i];
+    }
+    for(int i=0;i<n-1;i++){
+        for(int j=0;j<n-i;j++){
+            if(A[i+j]<0){
+                if(A[i+j]>A[j]&&A[j]<0){
+                    int t=A[j];
+                    A[j]=A[i+j];
+                    A[i+j]=t;
+                    print(A,n);
+                    cout<<'\n';
+                }
+            }
+            else if(A[i+j]>=0){
+                if(A[i+j]<A[j]&&A[j]>=0){
+                    int t=A[j];
+                    A[j]=A[i+j];
+                    A[i+j]=t;
+                    print(A,n);
+                    cout<<'\n';
+                }
+            }
+        }
+    }
+ for(int i=0;i<n-1;i++){
+        for(int j=0;j<n-i;j++){
+            if(A[i+j]<0){
+                if(A[i+j]>A[j]&&A[j]<0){
+                    int t=A[j];
+                    A[j]=A[i+j];
+                    A[i+j]=t;
+                    print(A,n);
+                    cout<<'\n';
+                }
+            }
+            else if(A[i+j]>=0){
+                if(A[i+j]<A[j]&&A[j]>=0){
+                    int t=A[j];
+                    A[j]=A[i+j];
+                    A[i+j]=t;
+                    print(A,n);
+                    cout<<'\n';
+
+                }
+            }
+        }
+    }
 
 
-   Dictionary.clear();
+
 }
